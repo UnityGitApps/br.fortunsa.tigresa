@@ -13,6 +13,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
+        
+    - name: Cocos Creator Build
+      uses: miggene/cocos-build@v1.2.3
+      with:
+        cocos_version: 3.0.0
 
     - name: Install Cocos Creator
       run: npm install -g cocos-cli
