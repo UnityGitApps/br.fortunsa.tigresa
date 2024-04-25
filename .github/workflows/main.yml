@@ -17,11 +17,8 @@ jobs:
     - name: Install Cocos Creator
       run: npm install -g cocos-cli
 
-    - name: Install dependencies
-      run: npm install
-
     - name: Build Android project
-      run: cocos build --platform android
+      run: /Applications/CocosCreator/Creator/3.0.0/CocosCreator.app/Contents/MacOS/CocosCreator --path projectPath --build "platform=android;debug=true"
 
     - name: Archive APK
       uses: actions/upload-artifact@v2
