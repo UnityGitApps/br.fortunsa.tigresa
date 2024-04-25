@@ -1,0 +1,27 @@
+name: Build Android
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+
+    - name: Install Cocos Creator
+      run: npm install -g cocos-cli
+
+    - name: Build Android project
+      run: cocos build --platform android  # Эта команда собирает проект под Android
+
+    - name: Archive APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: android-apk
+        path: build/jsb-link/frameworks/runtime-src/proj.android-studio/app/build/outputs/apk/debug/app-debug.apk  # Укажите путь к собранному APK
